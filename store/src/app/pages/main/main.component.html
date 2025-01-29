@@ -13,8 +13,8 @@
   <h3 class="section-title">Most Expensive Products</h3>
   <div class="product-grid">
     <ng-container *ngFor="let product of expensiveProducts">
-      <mat-card class="product-card">
-        <img mat-card-image [src]="product.image" alt="{{ product.name }}">
+      <mat-card class="product-card" [routerLink]="['/product', product.id]">
+        <img mat-card-image [src]="product.imageUrl" alt="{{ product.name }}">
         <mat-card-content>
           <h4>{{ product.name }}</h4>
           <p>\${{ product.price }}</p>
@@ -26,8 +26,8 @@
   <h3 class="section-title">Most Affordable Products</h3>
   <div class="product-grid">
     <ng-container *ngFor="let product of cheapProducts">
-      <mat-card class="product-card">
-        <img mat-card-image [src]="product.image" alt="{{ product.name }}">
+      <mat-card class="product-card" [routerLink]="['/product', product.id]">
+        <img mat-card-image [src]="product.imageUrl" alt="{{ product.name }}">
         <mat-card-content>
           <h4>{{ product.name }}</h4>
           <p>\${{ product.price }}</p>

@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Product } from '../../shared/interfaces/product.model';
 import { CommonModule } from '@angular/common';
 
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -18,33 +15,39 @@ import { Router } from '@angular/router';
   imports: [MatButtonModule,
     MatToolbarModule,
     MatCardModule,
+    RouterModule,
     CommonModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
 export class MainComponent {
 
-  
-
   constructor(private router:Router){}
 
-  product:Product[] = [];
-  expensiveProducts = [
-    { name: 'Gucci Jacket', price: 1200, image: 'assets/gucci-jacket.jpg' },
-    { name: 'LV Sneakers', price: 950, image: 'assets/lv-sneakers.jpg' },
-    { name: 'Balenciaga Hoodie', price: 850, image: 'assets/balenciaga-hoodie.jpg' },
-    { name: 'Versace Coat', price: 1500, image: 'assets/versace-coat.jpg' }
+  
+  products: Product[] = [
+    { id : 1, name: 'Gucci Jacket', price: 1200, imageUrl: '' },
+    { id:2,name: 'LV Sneakers', price: 950, imageUrl: '' },
+    { id:3,name: 'Balenciaga Hoodie', price: 850, imageUrl: '' },
+    { id : 4,name: 'Versace Coat', price: 1500, imageUrl: '' },
+    { id: 5,name: 'Basic T-Shirt', price: 50, imageUrl: '' },
+    { id:6,name: 'Casual Jeans', price: 70, imageUrl: '' },
+    { id:7,name: 'Everyday Sneakers', price: 90, imageUrl: '' },
+    { id :8,name: 'Minimalist Cap', price: 30, imageUrl: '' }
   ];
 
-  cheapProducts = [
-    { name: 'Basic T-Shirt', price: 50, image: 'assets/basic-tshirt.jpg' },
-    { name: 'Casual Jeans', price: 70, image: 'assets/casual-jeans.jpg' },
-    { name: 'Everyday Sneakers', price: 90, image: 'assets/everyday-sneakers.jpg' },
-    { name: 'Minimalist Cap', price: 30, image: 'assets/minimalist-cap.jpg' }
-  ];
+  get expensiveProducts(): Product[] {
+    return this.products.filter(product => product.price >= 800);
+  }
+
+  get cheapProducts(): Product[] {
+    return this.products.filter(product => product.price < 100);
+  }
+
 
   navigateToProducts(){
     this.router.navigate(['/products']);
   }
+
 
 }

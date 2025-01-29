@@ -12,26 +12,41 @@ export class OrderService {
 
   constructor() {}
 
-  /** Получить список заказов */
-  getOrders(): Observable<Order[]> {
+  // добавляем продукт в нашу якобы корзину
+  addToCart(product: Product, quantity: number) {
+    const orderExists = this.orders.find(order => order.product.id === product.id);
+
+    if (orderExists) {
+      
+      orderExists.quantity += quantity;
+      orderExists.totalPrice = orderExists.quantity * orderExists.product.price;
+    } else {
+      
+      const newOrder: Order = {
+        id: this.orders.length + 1,
+        product,
+        quantity,
+        totalPrice: product.price * quantity
+      };
+      this.orders.push(newOrder);
+    }
+
+    this.ordersSubject.next(this.orders);
+  }
+
+  getOrders() {
     return this.ordersSubject.asObservable();
   }
 
-  /** Добавить новый заказ */
-  addOrder(product: Product, quantity: number): void {
-    const newOrder: Order = {
-      id: this.orders.length + 1,
-      product,
-      quantity,
-      totalPrice: product.price * quantity,
-    };
-    this.orders.push(newOrder);
-    this.ordersSubject.next([...this.orders]); // Обновляем поток данных
+  
+  removeFromCart(orderId: number) {
+    this.orders = this.orders.filter(order => order.id !== orderId);
+    this.ordersSubject.next(this.orders);
   }
 
-  /** Удалить заказ */
-  removeOrder(orderId: number): void {
-    this.orders = this.orders.filter(order => order.id !== orderId);
-    this.ordersSubject.next([...this.orders]);
+ 
+  clearCart() {
+    this.orders = [];
+    this.ordersSubject.next(this.orders);
   }
 }
