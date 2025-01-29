@@ -1,0 +1,21 @@
+.app-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+  
+.app-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 64px; /* Adjust for toolbar height */
+    background-color: #f9f9f9;
+}
+  
+.welcome-card {
+    max-width: 600px;
+    text-align: center;
+}
