@@ -1,23 +1,44 @@
 <mat-toolbar color="primary" class="app-toolbar">
-    <span>Order Management</span>
-  </mat-toolbar>
-  
-  <div class="app-container">
-    <mat-card class="welcome-card">
-      <mat-card-header>
-        <mat-card-title>Welcome to the Order Management App</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          Easily add, view, and manage your orders. Use the form to add orders and
-          view them in the table below.
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="accent" routerLink="/orders">
-          Get Started
-        </button>
-      </mat-card-actions>
-    </mat-card>
+  <span class="site-title">TezAL</span>
+</mat-toolbar>
+
+<div class="main-container">
+  <mat-card class="info-card">
+    <mat-card-content>
+      <h2>Online Clothing Store</h2>
+      <p>Exclusive limited-edition collections from world-renowned brands.</p>
+    </mat-card-content>
+  </mat-card>
+
+  <h3 class="section-title">Most Expensive Products</h3>
+  <div class="product-grid">
+    <ng-container *ngFor="let product of expensiveProducts">
+      <mat-card class="product-card">
+        <img mat-card-image [src]="product.image" alt="{{ product.name }}">
+        <mat-card-content>
+          <h4>{{ product.name }}</h4>
+          <p>\${{ product.price }}</p>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
   </div>
-  
+
+  <h3 class="section-title">Most Affordable Products</h3>
+  <div class="product-grid">
+    <ng-container *ngFor="let product of cheapProducts">
+      <mat-card class="product-card">
+        <img mat-card-image [src]="product.image" alt="{{ product.name }}">
+        <mat-card-content>
+          <h4>{{ product.name }}</h4>
+          <p>\${{ product.price }}</p>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+
+  <div class="button-container">
+    <button mat-raised-button color="accent" (click)="navigateToProducts()">
+      View All Products
+    </button>
+  </div>
+</div>
