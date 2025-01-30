@@ -1,1 +1,19 @@
-<p>product works!</p>
+<div class="product-container" *ngIf="product; else notFound">
+    <button class="close-btn" style="margin-left: 100px" routerLink="/products">✖</button>
+    <mat-card class="product-card">
+      <img mat-card-image [src]="product.imageUrl || 'default-image.jpg'" alt="{{ product.name }}" />
+      <mat-card-content>
+        <h2>{{ product.name }}</h2>
+        <p>Price: ${{ product.price }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" (click)="addToCart()">Add to Cart</button>
+        <button mat-raised-button color="primary" routerLink="/orders">Go to Orders</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  
+  <ng-template #notFound>
+    <p>Product not found.</p>
+  </ng-template>
+  

@@ -10,10 +10,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-products',
   standalone:true,
-  imports: [MatToolbarModule,MatCardModule,MatButtonModule,CommonModule],
+  imports: [MatToolbarModule,MatCardModule,MatButtonModule,CommonModule,RouterModule],
   templateUrl: './order.component.html',
   styleUrl: './order.component.css'
 })
@@ -32,5 +34,10 @@ export class OrderComponent implements OnInit {
   removeOrder(orderId: number) {
     this.orderService.removeFromCart(orderId);
   }
+
+  clearCart() {
+    this.orderService.clearCart();
+  }
+
 
 }

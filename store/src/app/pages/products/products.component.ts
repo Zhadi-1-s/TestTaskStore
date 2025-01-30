@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Product } from '../../shared/interfaces/product.model';
+import { Order } from '../../shared/interfaces/order.model';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
@@ -8,14 +9,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { OrderService } from '../../shared/services/order.service';
 
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-products',
   standalone:true,
-  imports: [MatToolbarModule,MatCardModule,MatButtonModule,CommonModule],
+  imports: [MatToolbarModule,MatCardModule,MatButtonModule,CommonModule,RouterModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css'
 })
 export class ProductsComponent {
+
+  orders:Order[] = [];
 
   products: Product[] = [
     { id: 1, name: 'Gucci Jacket', price: 1200, imageUrl: '' },
@@ -47,5 +52,7 @@ export class ProductsComponent {
    addToCart(product: Product, quantity: number) {
     this.orderService.addToCart(product, quantity);
   }
+
+
 
 }

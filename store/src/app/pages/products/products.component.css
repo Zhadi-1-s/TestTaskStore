@@ -40,8 +40,11 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
-  
+  .product-card-content:hover{
+    transform: scale(1.005);
+    transition: 0.5s;
+    cursor: pointer;
+  }
   mat-card-image {
     width: 100%;
     height: 200px;

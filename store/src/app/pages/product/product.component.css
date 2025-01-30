@@ -1,0 +1,33 @@
+.product-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: black;
+    color: white;
+  }
+  
+  .product-card {
+    width: 400px;
+    text-align: center;
+    background-color: #222;
+    color: white;
+  }
+  
+  mat-card-title, mat-card-subtitle, p {
+    color: white;
+  }
+  
+  mat-card-actions {
+    display: flex;
+    justify-content: center;
+  }
+  
+  button {
+    background-color: white;
+    color: black;
+  }
+#closeButton{
+    margin-left: 100px;
+}
+  
