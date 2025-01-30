@@ -42,17 +42,16 @@ ng serve
 📦 tezAL
  ┣ 📂 src
  ┃ ┣ 📂 app
- ┃ ┃ ┣ 📂 components
+ ┃ ┃ ┣ 📂 pages
  ┃ ┃ ┃ ┣ 📂 main         # Main page (Home)
  ┃ ┃ ┃ ┣ 📂 product      # Product details page
- ┃ ┃ ┃ ┣ 📂 orders       # Shopping cart / Orders page
+ ┃ ┃ ┃ ┣ 📂 orders
+ ┃ ┃ ┃ ┣ 📂 products       # Shopping cart / Orders page
  ┃ ┃ ┣ 📂 shared
  ┃ ┃ ┃ ┣ 📂 services    # Order service, Product service
  ┃ ┃ ┃ ┣ 📂 interfaces  # Product and Order interfaces
- ┃ ┃ ┣ 📜 app-routing.module.ts # Routes setup
+ ┃ ┃ ┣ 📜 app-routes.ts # Routes setup
  ┃ ┃ ┣ 📜 app.component.ts       # Root component
- ┃ ┣ 📂 assets        # Images and styles
- ┃ ┣ 📜 styles.css    # Global styles
  ┣ 📜 angular.json    # Angular configuration
  ┣ 📜 package.json    # Dependencies & Scripts
  ┣ 📜 README.md       # Project Documentation
